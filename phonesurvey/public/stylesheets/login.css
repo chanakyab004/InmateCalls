@@ -1,0 +1,551 @@
+#login {
+    margin: 30px;
+}
+.login-form {
+	position: relative;
+	width: 350px;
+	margin: 0 auto;
+	z-index:5;
+	background: #f3f3f3;
+	border: 1px solid #fff;
+	border-radius: 5px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+.login-form .header {
+	padding: 10px 30px 20px 30px;
+}
+.login-form .header h1 {
+	font-weight: 300;
+	font-size: 20px;
+	line-height:34px;
+	color: #4d917b;
+	text-shadow: 1px 1px 0 rgba(256,256,256,1.0);
+	margin-bottom: 0;
+	font-weight:500;
+}
+
+.login-form .header span {
+	font-size: 15px;
+	line-height: 16px;
+	color: #678889;
+	text-shadow: 1px 1px 0 rgba(256,256,256,1.0);
+}
+
+.login-form .content {
+	padding: 0 30px 25px 30px;
+}
+.disabled{
+	background-color: rgb(235, 235, 228) !important;
+	box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	width:228px !important;
+	outline:none !important;
+	border:none !important;
+}
+.enabled{
+	width:228px !important;
+	background-color: #fff !important;
+}
+/* Input field */
+.login-form .content .input {
+	width: 250px;
+	padding: 7px;
+	font-weight: 400;
+	font-size: 14px;
+	color: #9d9e9e;
+	text-shadow: 1px 1px 0 rgba(256,256,256,1.0);
+	background: #fff;
+	border: 1px solid #fff;
+	border-radius: 5px;
+	box-shadow: inset 0 1px 3px rgba(0,0,0,0.50);
+	-moz-box-shadow: inset 0 1px 3px rgba(0,0,0,0.50);
+	-webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,0.50);
+	outline:none;
+}
+
+/* Second input field */
+.login-form .content .password, .login-form .content .pass-icon {
+	margin-top: 25px;
+}
+
+.login-form .content .input:hover {
+	background: #dfe9ec;
+	color: #414848;
+}
+
+.login-form .content .input:focus {
+	background: #dfe9ec;
+	color: #414848;
+	box-shadow: inset 0 1px 2px rgba(0,0,0,0.25);
+	-moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.25);
+	-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.25);
+}
+input[type=password]{
+	outline:none;
+}
+.user-icon, .pass-icon {
+	width: 46px;
+	height: 47px;
+	display: block;
+	position: relative;
+    margin-left: 494px;
+	padding-right: 2px;
+	z-index: 3;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+}
+
+.user-icon {
+	top:189px; /* Positioning fix for slide-in, got lazy to think up of simpler method. */
+	background: rgba(65,72,72,0.75) url(../images/user-icon.png) no-repeat center;	
+}
+
+.pass-icon {
+	top:208px;
+	background: rgba(65,72,72,0.75) url(../images/pass-icon.png) no-repeat center;
+}
+
+/* Animation */
+.input, .user-icon, .pass-icon, .button, .register {
+	transition: left 0.5s;
+	-moz-transition: left 0.5s;
+	-webkit-transition: left 0.5s;
+	-o-transition: left 0.5s;
+	-ms-transition: left 0.5s;
+}
+
+/*******************
+FOOTER
+*******************/
+
+.login-form .footer {
+	padding: 15px 30px;
+	overflow: auto;
+	background:rgba(212,222,223,0.5);
+	border-top: 1px solid #fff;
+	box-shadow: inset 0 1px 0 rgba(0,0,0,0.15);
+	-moz-box-shadow: inset 0 1px 0 rgba(0,0,0,0.15);
+	-webkit-box-shadow: inset 0 1px 0 rgba(0,0,0,0.15);
+}
+
+/* Login button */
+.login-form .footer .button {
+	float:right;
+   background:rgba(77,145,123,0.9);
+    color: #f7f7f7;
+    border: none;
+    border-radius: 2px;
+    padding: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 6px 14px;
+}
+
+.login-form .footer .button:hover {
+  background:rgba(77,145,123,1);
+
+}
+
+.login-form .footer :focus {
+	position: relative;
+	bottom: -1px;
+	 background:rgba(77,145,123,1);
+	
+}
+
+#forgot {
+    color: #505050;
+    font-size: 13px;
+    position: relative;
+    top: 10px;
+    left: 95px;
+}
+.page
+{
+	float: left;
+	width: 160px;
+	margin-left:15px;
+	margin-top:10px;
+	border:2px solid #e1e1e1;
+	border-radius:3px;
+}
+#leftcontentwrapper
+{
+	margin-top:10px;
+	width: 740px;
+	float: left;
+	margin-left:40px;
+}
+
+ul.nav {
+	list-style: none; /* this removes the list marker */
+	 /* this creates the top border for the links - all others are placed using a bottom border on the LI */
+	margin:0;
+	padding:0; /* this creates the space between the navigation on the content below */
+}
+ul.nav li {
+	border-bottom: 1px solid rgba(77,145,123,0.9); /* this creates the button separation */
+	padding-left:30px;
+	padding-top:5px;
+	padding-bottom:5px;
+	width:130px;
+	background:#f6f6f6;
+	font-size:14px;
+}
+ul.nav li:hover {
+	color:#fff;
+	background:rgba(77,145,123,0.9);
+}
+
+ul.nav a, ul.nav a:visited { /* grouping these selectors makes sure that your links retain their button look even after being visited */
+	/* this gives the link block properties causing it to fill the whole LI containing it. This causes the entire area to react to a mouse click. */
+  /*this width makes the entire button clickable for IE6. If you don't need to support IE6, it can be removed. Calculate the proper width by subtracting the padding on this link from the width of your sidebar container. */
+	text-decoration: none;
+	color: #fff;
+	padding: 0px;
+	width:130px;
+}
+ul.nav li:last-child
+{
+	border:none;
+}
+ul.nav li a:hover {
+	
+	color:#fff;
+	
+}
+
+#admin-contentemail
+{
+	margin-left:5px;
+	float:left;
+	width:50px;
+	margin-top:15px;
+	margin-bottom:10px;
+	font-size:10pt;
+	display:block;
+	margin-right:10px;
+}
+#adminright-column
+{
+	float:left;
+	margin-top:10px;
+	margin-bottom:10px;
+	margin-left:7px;
+	height:30px;
+	padding:8px;
+}
+#email_body
+{
+	border-bottom-left-radius:10px;
+	border-bottom-right-radius:10px;
+	border-top-left-radius:10px;
+	border-top-right-radius:10px;
+	width:620px;
+	height:380px;
+	float:left;
+	margin-top:10px;
+	margin-left:14px;
+	margin-bottom:10px;
+	padding:10px;
+	outline: none;
+	border: 1px solid #e1e1e1;
+    border-radius: 4px;
+    background: #fff;
+    color: #808080;
+    display: inline;
+}
+#email_subject
+{
+	margin-left:0px;
+	width:620px;
+	padding:10px;
+	outline: none;
+	border: 1px solid #e1e1e1;
+    border-radius: 4px;
+    background: #fff;
+    color: #808080;
+    display: inline;
+}
+#adminactions button {
+    background:rgba(77,145,123,0.9);
+    color: #f7f7f7;
+    border: none;
+    border-radius: 2px;
+    padding: 6px;
+    cursor: pointer;
+    font-size:14px;
+}
+
+#leftcontentwrapper
+{
+	margin-top:10px;
+	width: 740px;
+	float: left;
+	margin-left:40px;
+}
+
+ul.nav {
+	list-style: none; /* this removes the list marker */
+	 /* this creates the top border for the links - all others are placed using a bottom border on the LI */
+	margin:0;
+	padding:0; /* this creates the space between the navigation on the content below */
+}
+ul.nav li {
+	border-bottom: 1px solid rgba(77,145,123,0.9); /* this creates the button separation */
+	padding-left:30px;
+	padding-top:5px;
+	padding-bottom:5px;
+	width:130px;
+	background:#f6f6f6;
+	font-size:14px;
+}
+ul.nav li:hover {
+	
+	color:#333;
+	background:rgba(77,145,123,0.9);
+}
+ul.nav a, ul.nav a:visited { /* grouping these selectors makes sure that your links retain their button look even after being visited */
+	/* this gives the link block properties causing it to fill the whole LI containing it. This causes the entire area to react to a mouse click. */
+  /*this width makes the entire button clickable for IE6. If you don't need to support IE6, it can be removed. Calculate the proper width by subtracting the padding on this link from the width of your sidebar container. */
+	text-decoration: none;
+	color: #333;
+	padding: 0px;
+	width:130px;
+}
+ul.nav li:last-child
+{
+	border:none;
+}
+ul.nav li a:hover {
+	color:#333;
+}
+
+#admin-contentemail
+{
+	margin-left:5px;
+	float:left;
+	width:50px;
+	margin-top:15px;
+	margin-bottom:10px;
+	font-size:10pt;
+	display:block;
+	margin-right:10px;
+}
+#adminright-column
+{
+	float:left;
+	margin-top:10px;
+	margin-bottom:10px;
+	margin-left:7px;
+	height:30px;
+	padding:8px;
+	border:none;
+}
+#bodyadmin
+{
+	background-color:#f4f4f4;
+	border-bottom-left-radius:10px;
+	border-bottom-right-radius:10px;
+	border-top-left-radius:10px;
+	border-top-right-radius:10px;
+	border:1px solid #BEBEBE;
+	width:620px;
+	height:380px;
+	float:left;
+	margin-top:10px;
+	margin-left:14px;
+	margin-bottom:10px;
+	padding:10px;
+}
+#subjecttext
+{
+	margin-left:0px;
+	width:620px;
+	padding:10px;
+}
+
+#adminactions button {
+    background:rgba(77,145,123,0.9);
+    color: #f7f7f7;
+    border: none;
+    border-radius: 2px;
+    padding: 6px;
+    cursor: pointer;
+    font-size:14px;
+}
+
+#leftcontentwrapper
+{
+	margin-top:10px;
+	width: 740px;
+	float: left;
+	margin-left:40px;
+}
+
+ul.nav {
+	list-style: none; /* this removes the list marker */
+	 /* this creates the top border for the links - all others are placed using a bottom border on the LI */
+	margin:0;
+	padding:0; /* this creates the space between the navigation on the content below */
+}
+ul.nav li {
+	border-bottom: 1px solid rgba(77,145,123,0.9); /* this creates the button separation */
+	padding-left:30px;
+	padding-top:5px;
+	padding-bottom:5px;
+	width:130px;
+	background:#f6f6f6;
+	font-size:14px;
+}
+ul.nav li:hover {
+	color:#fff;
+	background:rgba(77,145,123,0.9);
+}
+ul.nav a, ul.nav a:visited { /* grouping these selectors makes sure that your links retain their button look even after being visited */
+	/* this gives the link block properties causing it to fill the whole LI containing it. This causes the entire area to react to a mouse click. */
+  /*this width makes the entire button clickable for IE6. If you don't need to support IE6, it can be removed. Calculate the proper width by subtracting the padding on this link from the width of your sidebar container. */
+	text-decoration: none;
+	color: #333;
+	padding: 0px;
+	width:130px;
+}
+ul.nav li:last-child
+{
+	border:none;
+}
+ul.nav li a:hover {
+	
+	color:#fff;
+	
+}
+
+#admin-contentemail
+{
+	margin-left:5px;
+	float:left;
+	width:50px;
+	margin-top:15px;
+	margin-bottom:10px;
+	font-size:10pt;
+	display:block;
+	margin-right:10px;
+}
+#adminright-column
+{
+	float:left;
+	margin-top:10px;
+	margin-bottom:10px;
+	margin-left:7px;
+	height:30px;
+	padding:8px;
+	border:none;
+}
+#bodyadmin
+{
+	background-color:#f4f4f4;
+	border-bottom-left-radius:10px;
+	border-bottom-right-radius:10px;
+	border-top-left-radius:10px;
+	border-top-right-radius:10px;
+	border:1px solid #BEBEBE;
+	width:620px;
+	height:380px;
+	float:left;
+	margin-top:10px;
+	margin-left:14px;
+	margin-bottom:10px;
+	padding:10px;
+}
+#subjecttext
+{
+	margin-left:0px;
+	width:620px;
+	padding:10px;
+}
+#adminactions {
+    float: right;
+    margin-right:17px;
+    margin-bottom:30px;
+	margin-top:10px;
+}
+#adminactions button {
+    background:rgba(77,145,123,0.9);
+    color: #f7f7f7;
+    border: none;
+    border-radius: 2px;
+    padding: 6px;
+    cursor: pointer;
+    font-size:14px;
+}
+ 
+#update_email,#cancel_email {
+    background:rgba(77,145,123,0.9);
+    color: #f7f7f7;
+    border: none;
+    border-radius: 2px;
+    padding: 6px;
+    cursor: pointer;
+    font-size:14px;
+	margin-left: 10px;
+}
+
+#calendaricon
+{
+	margin-left:-23px;
+	margin-right: 8px;
+}
+.tooltip {
+    text-decoration:none;
+    position:relative;
+    display: inline;
+    color:#000;
+    
+}
+
+.tooltip span {
+     display:none;
+     width: 250px;
+    border: 1px solid #ccc;
+    margin: 0px;
+	background:#f4f4f4;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(164, 164, 164, 1);
+    box-shadow: 0px 0px 5px 0px rgba(164, 164, 164, 1);
+	border-radius:10px;
+     color: #333;
+    right: 50%;
+    padding: 2px 8px;
+    position: absolute;
+    z-index: 98;
+
+}
+.tooltip span p
+{
+	font-size:14px;
+	color:#408080;
+	margin-top:0px;
+	font-weight:600;
+	background:#e1e1e1;
+	
+}
+.tooltip span pre
+{
+	font-size:14px;
+	color:#408080;
+	margin-top:0px;
+	font-weight:600;
+	background:#e1e1e1;
+	display:inline;
+	
+}
+.tooltip:hover span {
+    display:block;
+    position:fixed;
+    overflow:hidden;
+    background:#e1e1e1;
+}

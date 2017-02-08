@@ -1,0 +1,26 @@
+<section id="content-wrapper">
+	<center><p style="margin-left:30px;margin-top:20px;color:rgb(77,145,123);font-size:14px"><span style="color:#292929;font-size:16px">Usage Disclaimer : </span> Use either Firefox or Internet Explorer for complete site functionality.If you prefer to use Chrome, please unblock the scripts before using the site.</p></center>
+	<div id="login" style="height: 550px;margin-top:-50px">
+		<div class="user-icon"></div>
+		<div class="pass-icon"></div>
+		<form name="login-form" class="login-form"
+			action="<?php echo $this->baseUrl("index/validate");?>" method="post">
+			<div class="header">
+				<h1>Pin Code Verification</h1>
+				<span style="font-size:13px">To continue you will need to verify Pin Code</span>
+			</div>
+			<div class="content">
+				<input name="code" type="text" class="input username"
+					placeholder="PIN CODE" />
+			</div>
+			<p style="font-size: 13px; color: red; margin-left: 30px;">
+				<?php echo $this->error;?>
+			</p>
+			<div class="footer">
+				<input type="submit" name="verify_code" value="Verify" class="button" />
+				<input type="submit" name="resend_code" value="Resend Code" class="button" style="margin-right: 10px;"/>
+			</div>
+		</form>
+	</div>
+	<div class="clr"></div>
+</section>

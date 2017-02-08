@@ -1,0 +1,368 @@
+<?php
+$otherPhoneresult = $this->otherPhoneresult;
+$relativePhoneresult = $this->relativePhoneresult;
+$associatePhoneresult = $this->associatePhoneresult;
+$otherNameresult = $this->otherNameresult;
+$relativeNameresult = $this->relativeNameresult;
+$associateNameresult = $this->associateNameresult;
+$businessPhoneresult = $this->businessPhoneresult;
+$businessNameresult = $this->businessNameresult;
+$fullname = $this->fullname;
+$dob = $this->dob;
+$address = $this->address;
+$finalssn = $this->finalssn;
+$success = $this->successresult;
+if($success != "")
+{?>
+	<script>
+		location.href="<?php echo $this->baseUrl("index/thankyou")?>";
+	</script>
+<?php }?>
+<style>
+	table tr td{
+		text-align:left;
+		padding:5px;
+	}
+	td input{
+		height:17px;
+	}
+	td select{
+		height:38px;
+	}
+	.content div ul li, .content div ul{
+		list-style:none;
+		margin:0;
+		margin-top:5px;
+		padding:0;
+		color:red;
+	}
+	label{
+		font-size:15px;
+		color:rgb(77,145,123);
+	}
+	li.required{
+		position: absolute;
+		margin-top: -7px !important;
+	}
+</style>
+
+<script type="text/javascript" src="<?php echo $this->baseUrl("public/scripts/parsley.js");?>"></script>
+<script type="text/javascript" src="<?php echo $this->baseUrl("public/scripts/pagination.js");?>"></script>
+<div id="login" class="clr">
+	 <noscript>
+	 <div class="noscriptmsg" style="text-align: center;color:#ff0000;padding-bottom:20px;font-size:18px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
+   			Script blocker is enabled on your system, please disable it to continue.
+  	 </div>
+  	 </noscript>
+	<p style="color:rgb(77,145,123);font-size:15px;width:1305px;margin:auto;">
+Thank you for participating in our effort to better understand and improve the phone numbers that we associate with people. Your feedback is appreciated, and is strictly on an "opt-in" voluntary basis.<br/><br/>
+
+We want to determine, for each phone number that we associate with you, whether you can be reached at that number or not. So, for example, you would probably say "yes" if a number is not yours but belongs to a spouse or family member. Conversely, if the number is yours but you use it only as a dedicated data/FAX line, you would indicate "no".</p>
+	<br/>
+	<p style="width: 1305px;margin: auto;color:rgb(77,145,123);font-size:14px"><span style="color:#292929;font-size:16px;">Usage Disclaimer : </span> Use either Firefox or Internet Explorer for complete site functionality.If you prefer to use Chrome, please unblock the scripts before using the site.</p>
+	<br/>
+	<div name="login-form" class="login-form" style="width:1305px;">
+		<div class="header">
+			<h1>Get Details</h1>
+			<span>Please give the below details and submit to get user phone number details:</span>
+		</div>
+		<div class="content">
+			<form id="searchform" action="" method="post" data-validate="parsley">
+				<div style="display: inline-block;float:left">
+					<label>First Name</label><br/>
+					<input name="firstname" type="text" autocomplete="off" class="input username inputvalid" style="width:325px" data-required="true"/>
+				</div>
+				<div style="display: inline-block;float:left;margin-left:15px;">
+					<label>Last Name</label><br/>
+					<input name="lastname" type="text" autocomplete="off" class="input username inputvalid" style="width:325px" data-required="true"/>
+				</div>
+				<div style="display: inline-block;float:left;margin-left:15px;">
+					<label>SSN</label><br/>
+					<div style="display: inline-block;float:left">
+						<input id="ssn" name="ssn" type="password" placeholder="#########" class="input username inputvalid" style="width:325px" data-required="true" data-parsley-type="digits" data-parsley-minlength="3"/><br/>
+						<span style="color:red;display:none;padding-left: 5px;line-height:30px;">Required 9 digits</span>
+					</div>
+				</div>
+				<div style="display: inline-block;float:left;margin-left:15px;margin-top:29px">
+					<input type="submit" name="get_details" value="Get Details" class="button buttonnew" /><br/>
+				</div>
+				<div class="clr"></div>
+				<br/>
+				<?php if(isset($otherPhoneresult)){if(count($otherPhoneresult)==0){?><p id="ssnerror" style="color:#f00;font-size:16px">No records found</p><?php }}?>
+			</form>
+			<form action="" method="post" id="resultform" data-validate="parsley">
+				<div style="margin-top:20px;<?php if(count($otherPhoneresult)==0){?>display:none;<?php }?>">
+					<p style="color:rgb(77,145,123);font-size:16px;text-decoration:underline">User Details</p>
+					<span style="color:rgb(77,145,123);margin-left:7px;">Name </span><label style="margin-left:55px"><?php echo $fullname;?></label>
+					<input name='fullname' type="hidden" value='<?php echo $fullname;?>'>
+					<input name='dob' type="hidden" value='<?php echo $dob;?>'>
+					<?php 
+					if(is_array($address) && count($address)>0){
+					foreach($address as $key){?>
+					<input name='address[]' type="hidden" value='<?php echo $key;?>'>
+					<?php }}?>
+					<input name='finalssn' type="hidden" value='<?php echo $finalssn;?>'>
+					<table id="customer-data" style="margin-top:20px;width:1250px;">
+						<thead>
+							<th>#</th>
+							<th style="width:130px">Phone Number</th>
+							<th style="width:170px">Name</th>
+							<th style="width:255px">Is this a number you can be reached at?</th>
+							<th>Reason?</th>
+							<th></th>
+						</thead>
+						<tbody>
+							<?php if(count($otherPhoneresult)>0){ ?>
+							<tr><td></td><td colspan="5" style="color:#555;font-size:14px;font-weight: bold;text-decoration: underline;">Personal Phone Numbers</td></tr>
+							<?php for($i=1;$i<=count($otherPhoneresult);$i++){?>
+							<tr>
+								<input name='phonetype[]' type="hidden" value='Personal'>
+								<td><?php echo $i;?></td>
+								<td>
+									<label>
+										<?php $mobile = $otherPhoneresult[$i-1];
+											$first = substr($mobile,0,3);
+											$second = substr($mobile,3,3);
+											$third = substr($mobile,6,4);
+											echo '('.$first.') '.$second.' - '.$third;
+										?>
+									</label>
+									<input name='phone[]' type="hidden" value='<?php if(isset($otherPhoneresult[$i-1])) echo $otherPhoneresult[$i-1];?>'>
+								</td>
+								<td>
+									<label>
+										<?php if(isset($otherNameresult[$i-1])) echo $otherNameresult[$i-1];?>
+									</label>
+									<input name='name[]' type="hidden" value='<?php if(isset($otherNameresult[$i-1])) echo $otherNameresult[$i-1];?>'>
+								</td>
+								<td>
+									<select name='reachable[]' class="input" onchange="getoption(this)" data-required="true">
+										<option value="" selected disabled>Select</option>
+										<option value="yes">Yes</option>
+										<option value="no">No</option>
+									</select>
+								</td>
+								<td>
+									<select name='reason[]' class="input sd1" data-required="true">
+										<option value="" selected disabled>Select</option>
+									</select>
+								</td>
+								<td>
+									<input type="text" name='otherreason[]' class="input disabled" disabled>
+								</td>
+							</tr><?php }}?>
+							<?php if(count($relativePhoneresult)>0){?>
+							<tr><td></td><td colspan="5" style="color:#555;font-size:14px;font-weight: bold;text-decoration: underline;">Relative Phone Numbers</td></tr>
+							<?php  for($i=1;$i<=count($relativePhoneresult);$i++){?>
+							<tr>
+								<input name='phonetype[]' type="hidden" value='Relative'>
+								<td><?php echo $i;?></td>
+								<td>
+									<label>
+										<?php $mobile = $relativePhoneresult[$i-1];
+											$first = substr($mobile,0,3);
+											$second = substr($mobile,3,3);
+											$third = substr($mobile,6,4);
+											echo '('.$first.') '.$second.' - '.$third;
+										?>
+									</label>
+									<input name='phone[]' type="hidden" value='<?php if(isset($relativePhoneresult[$i-1])) echo $relativePhoneresult[$i-1];?>'>
+								</td>
+								<td>
+									<label>
+										<?php if(isset($relativeNameresult[$i-1])) echo $relativeNameresult[$i-1];?>
+									</label>
+									<input name='name[]' type="hidden" value='<?php if(isset($relativeNameresult[$i-1])) echo $relativeNameresult[$i-1];?>'>
+								</td>
+								<td>
+									<select name='reachable[]' class="input" onchange="getoption(this)" data-required="true">
+										<option value="" selected disabled>Select</option>
+										<option value="yes">Yes</option>
+										<option value="no">No</option>
+									</select>
+								</td>
+								<td>
+									<select name='reason[]' class="input sd1" data-required="true">
+										<option value="" selected disabled>Select</option>
+									</select>
+								</td>
+								<td>
+									<input type="text" name='otherreason[]' class="input disabled" disabled>
+								</td>
+							</tr><?php }}?>
+							<?php if(count($associatePhoneresult)>0){?>
+								<tr><td></td><td colspan="5" style="color:#555;font-size:14px;font-weight: bold;text-decoration: underline;">Associate Phone Numbers</td></tr>
+							<?php for($i=1;$i<=count($associatePhoneresult);$i++){?>
+							
+							<tr>
+								<input name='phonetype[]' type="hidden" value='Associate'>
+								<td><?php echo $i;?></td>
+								<td>
+									<label>
+										<?php $mobile = $associatePhoneresult[$i-1];
+											$first = substr($mobile,0,3);
+											$second = substr($mobile,3,3);
+											$third = substr($mobile,6,4);
+											echo '('.$first.') '.$second.' - '.$third;
+										?>
+									</label>
+									<input name='phone[]' type="hidden" value='<?php if(isset($associatePhoneresult[$i-1])) echo $associatePhoneresult[$i-1];?>'>
+								</td>
+								<td>
+									<label>
+										<?php if(isset($associateNameresult[$i-1])) echo $associateNameresult[$i-1];?>
+									</label>
+									<input name='name[]' type="hidden" value='<?php if(isset($associateNameresult[$i-1])) echo $associateNameresult[$i-1];?>'>
+								</td>
+								<td>
+									<select name='reachable[]' class="input" onchange="getoption(this)" data-required="true">
+										<option value="" selected disabled>Select</option>
+										<option value="yes">Yes</option>
+										<option value="no">No</option>
+									</select>
+								</td>
+								<td>
+									<select name='reason[]' class="input sd1" data-required="true">
+										<option value="" selected disabled>Select</option>
+									</select>
+								</td>
+								<td>
+									<input type="text" name='otherreason[]' class="input disabled" disabled>
+								</td>
+							</tr><?php }}?>
+							<?php if(count($businessPhoneresult)>0){?>
+								<tr><td></td><td colspan="5" style="color:#555;font-size:14px;font-weight: bold;text-decoration: underline;">Business Phone Numbers</td></tr>
+							<?php for($i=1;$i<=count($businessPhoneresult);$i++){?>
+							
+							<tr>
+							<input name='phonetype[]' type="hidden" value='Business'>
+								<td><?php echo $i;?></td>
+								<td>
+									<label>
+										<?php $mobile = $businessPhoneresult[$i-1];
+											$first = substr($mobile,0,3);
+											$second = substr($mobile,3,3);
+											$third = substr($mobile,6,4);
+											echo '('.$first.') '.$second.' - '.$third;
+										?>
+									</label>
+									<input name='phone[]' type="hidden" value='<?php if(isset($businessPhoneresult[$i-1])) echo $businessPhoneresult[$i-1];?>'>
+								</td>
+								<td>
+									<label>
+										<?php if(isset($businessNameresult[$i-1])) echo $businessNameresult[$i-1];?>
+									</label>
+									<input name='name[]' type="hidden" value='<?php if(isset($businessNameresult[$i-1])) echo $businessNameresult[$i-1];?>'>
+								</td>
+								<td>
+									<sel
+									ect name='reachable[]' class="input" onchange="getoption(this)">
+										<option value="" selected disabled>Select</option>
+										<option value="yes">Yes</option>
+										<option value="no">No</option>
+									</select>
+								</td>
+								<td>
+									<select name='reason[]' class="input sd1">
+										<option value="" selected disabled>Select</option>
+									</select>
+								</td>
+								<td>
+									<input type="text" name='otherreason[]' class="input disabled" disabled>
+								</td>
+							</tr><?php }}?>
+						</tbody>
+					</table>
+					<br/>
+					<input class="buttonnew" type="submit" value="Done" name="done" style="float:right" /> <!-- onclick="javascript:location.reload();" -->
+					<br/>
+				</div>
+				<p style="font-size: 15px; color: red; margin-left: 5px;">
+					<?php echo $this->error;?>
+				</p>
+			</form>
+		</div>
+	</div>
+	<br/><br/>
+	<div class="clr"></div>
+</div>
+<script>
+	$('#searchform').parsley();
+	$('#resultform').parsley();
+	function getoption(val){
+		var value = val[val.selectedIndex].value;
+		if(value=='yes'){
+			$(val).parent().next().find('select').empty().append('<option value="" selected disabled>Select</option><option class="yes1" value="This is my landline">This is my landline</option><option class="yes1" value="This is my cell phone">This is my cell phone</option><option class="yes1" value="This is my VoIP number">This is my VoIP number</option><option class="yes1" value="This is my voice number at which I can be reached, but is NOT one of the above types">This is my voice number at which I can be reached, but is NOT one of the above types</option><option class="yes1" value="This is a spouse, a relative, or some other number at which I can be reached">This is a spouse, a relative, or some other number at which I can be reached</option><option class="yes1" value="other">Other (please explain)</option>');
+			//$(val).parent().next().find('.no1').toggleOption(false);
+		}else if(value=='no'){
+			$(val).parent().next().find('select').empty().append('<option value="" selected disabled>Select</option><option class="no1" value="This is my number, but I can never be reached on it (e.g., dedicated data/FAX)">This is my number, but I can never be reached on it (e.g., dedicated data/FAX)</option><option class="no1" value="This number is no longer valid, but was valid within the past year">This number is no longer valid, but was valid within the past year</option><option class="no1" value="This number is no longer valid, but was valid 1-5 years ago">This number is no longer valid, but was valid 1-5 years ago</option><option class="no1" value="This number has not been valid for more than 5 years">This number has not been valid for more than 5 years</option><option class="no1" value="To my knowledge, this number has never been associated with me">To my knowledge, this number has never been associated with me</option><option class="no1" value="other">Other (please explain)</option>');
+			//$(val).parent().next().find('.no1').toggleOption(true);
+		}
+		$('.sd1').trigger('change');
+	}
+	$('.sd1').on('change',function(){
+		var el = $(this);
+		toggleSelect(this);
+	});
+	$("#ssn").keydown(function (e) {
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+            (e.keyCode == 65 && e.ctrlKey === true) || 
+            (e.keyCode >= 35 && e.keyCode <= 39)) {
+                 return;
+        }
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
+	function toggleSelect(elem){
+		var value = elem[elem.selectedIndex].value;
+		$('#resultform').parsley('destroy');
+		if(value=='other'){
+			$(elem).parent().next('td').find('input').removeAttr('disabled');
+			$(elem).parent().next('td').find('input').removeClass('disabled');
+			$(elem).parent().next('td').find('input').addClass('enabled');
+			$(elem).parent().next('td').find('input').attr( "data-required", true );
+			//$(elem).parent().next('td').find('input').Val();
+		}else{
+			$(elem).parent().next('td').find('input').attr('disabled','true');
+			$(elem).parent().next('td').find('input').removeAttr('data-required');
+			$(elem).parent().next('td').find('input').removeClass('enabled');
+			$(elem).parent().next('td').find('input').addClass('disabled');
+			//$(elem).parent().next('td').find('input').Val();
+		}
+		$('#resultform').parsley();
+	}
+	$.fn.toggleOption = function (show) {
+        $(this).toggle(show);
+        if (show) {
+            if ($(this).parent('span.toggleOption').length)
+                $(this).unwrap();
+        } else if ($(this).parent('span.toggleOption').length==0){
+                $(this).wrap('<span class="toggleOption" style="display: none;" />');
+        }
+    };
+    $(".inputvalid").on('keyup',function(){
+		$('#ssnerror').hide();
+	});
+	$('#ssn').on('blur',function(){
+		if($('#ssn').val().length!=9 && $('#ssn').val().length!=0)
+		{
+			$('#ssn').parent().find('span').show("slow");
+		}else{
+			$('#ssn').parent().find('span').hide("slow");
+		}
+	});
+	$('#ssn').on('keyup',function(){
+		$('#ssn').parent().find('span').hide("slow");
+	});
+
+	$('#ssn').on('focus keyup blur',function(){
+		var me = this;
+		var val1 = $('#ssn').val();
+		if(val1.length!=9){
+			$('#searchform').attr('onsubmit','return false');
+		}else{
+			$('#searchform').attr('onsubmit','return true');
+		}
+	});
+</script>

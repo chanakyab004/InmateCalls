@@ -1,0 +1,62 @@
+<?php echo $this->doctype('XHTML1_STRICT'); ?>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="TLO" content="Phone Survey Project" />
+		<meta charset="utf-8" />
+		<title>TLO</title>
+		<link rel="stylesheet"
+			href="<?php echo $this->baseUrl("public/stylesheets/style.css");?>" />
+		<link rel="stylesheet"
+			href="<?php echo $this->baseUrl("public/stylesheets/login.css");?>" />
+		<link rel="stylesheet"
+			href="<?php echo $this->baseUrl("public/stylesheets/font-awesome.min.css");?>" />
+		<link rel="icon"
+			href="<?php echo $this->baseUrl("public/images/icon.ico");?>" />
+		<link rel="stylesheet"
+			href="<?php echo $this->baseUrl('public/stylesheets/login.css')?>" />
+		<link rel="stylesheet"
+			href="<?php echo $this->baseUrl('public/stylesheets/menu.css')?>" />
+		<link rel="stylesheet"
+			href="<?php echo $this->baseUrl('public/stylesheets/bootstrap.min.css')?>" />
+		<script src="<?php echo $this->baseUrl('public/scripts/jquery.min.js')?>"></script>
+		<script type="text/javascript" src="<?php echo $this->baseUrl("public/scripts/bootstrap.min.js");?>"></script>
+		<script type="text/javascript" src="<?php echo $this->baseUrl("public/scripts/bootbox.min.js");?>"></script>
+		<?php echo $this->headLink(); ?>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="main-wrapper">
+				<?php if(isset($_SESSION['phonesurvey']['authenticated'])){?>
+				<div id="function">
+					<button
+						onclick="javascript:location.href='<?php echo $this->url(array ('controller' => 'index','action' => 'logout'), 'default'); ?>'">
+						<i class="fa fa-sign-out"></i> Logout
+					</button>
+					 <span id="username"><?php if(isset($_SESSION['phonesurvey']['user'])){echo $_SESSION['phonesurvey']['user'];}?></span>
+					 <span id="user-role"><?php if(isset($_SESSION['phonesurvey']['role_name'])){ echo $_SESSION['phonesurvey']['role_name']; }?></span>
+					<div class=clr></div>
+				</div>
+				<?php }?>
+				<header>
+					<figure>
+						<img id="trans-logo" alt="tlo logo"
+							src="<?php echo $this->baseUrl("public/images/tlo_logo.jpg");?>" />
+					</figure>
+					<div class="clr"></div>
+				</header>
+				<div id="counterheader"></div>
+				<section id="controls">
+					<?php echo $this->layout()->content; ?>
+					<div class="clr"></div>
+				</section>
+			</div>
+			<div class="clr"></div>
+		</div>
+		<footer>
+			<div style="float: left;">&copy;2006-2014 TransUnion LLC. All rights reserved.</div>
+			<div class="right">Version #0.1</div>
+			<div class="clr"></div>
+		</footer>
+	</body>
+</html>
